@@ -1,3 +1,4 @@
+
 // var for generate button in html
 var generateBtn = document.querySelector("#generate");
 //arrays for password criteria to pull from:
@@ -10,7 +11,7 @@ var passwordLength;
 var uppercase;
 var lowercase;
 var numbers;
-var specials
+var specials;
 
 //function to choose length of password
 function chooseLength(){
@@ -76,40 +77,61 @@ function chooseSpecials () {
 }
 chooseSpecials ();
 
-//use the return input from above four prompts to generate parameters for password
+//use the return input from above four prompts to generate parameters for password including the console.log
 function generatePassword () {
-  chooseLength ();
+  chooseLength();
   console.log(length);
-  chooseUppercase ();
+  chooseUppercase();
   console.log(uppercase);
-  chooseLowercase ();
+  chooseLowercase();
   console.log(lowercase);
-  chooseNumbers ();
+  chooseNumbers();
   console.log(numbers);
-  chooseSpecials ();
+  chooseSpecials();
   console.log(specials);
+
+
+var characters = lowercaseOptions;
+var password = "";
+if (uppercase && numbers && specials) {
+  characters += uppercaseOptions + numbersOptions + specialsOptions;
+
+}else if (uppercase && numbers) {
+  characters += uppercaseOptions + numbersOptions;
+
+}else if (numbers && specials) {
+  characters += numbersOptions + specialsOptions;
+
+}else if (uppercase && specials) {
+  characters += uppercaseOptions + specialsOptions;
+
+}else if (uppercase) {
+  characters += uppercaseOptions;
+
+}else if (numbers) {
+  characters += numbersOptions;
+
+}else if (specials) {
+  characters += specialsOptions;
+
+}else {
+  characters += lowercaseOptions;
 }
 
+  for(var i = 0; i < passwordLength; i++){
+    password += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return password;
 
-//prompt should ask what criteria to include
-  // length(8-128 characters), uppercase or lowercase or both, and/or special characters
-  //create arrays for these criteria to pull from
-
-//each prompt should console.log and store the input
-
-//at the end of the prompts, a random number generator needs to run over each array and output a password the length selected
-
-//the password should be returned and output in the password form field
-
+}
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
- 
+  var passwordText = document.querySelector("#password"); 
+
   passwordText.value = password;
   
 }
 
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
