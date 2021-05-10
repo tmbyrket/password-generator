@@ -77,7 +77,7 @@ function chooseSpecials () {
 }
 chooseSpecials ();
 
-//use the return input from above four prompts to generate parameters for password including the console.log
+//use the return input from above four prompts to generate parameters for password including the console.log with stored data and for loop
 function generatePassword () {
   chooseLength();
   console.log(length);
