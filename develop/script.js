@@ -1,9 +1,16 @@
 // var for generate button in html
 var generateBtn = document.querySelector("#generate");
+//arrays for password criteria to pull from:
+var uppercaseOptions = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var lowercaseOptions = 'abcdefghijklmnopqrstuvwxyz';
+var numbersOptions = '1234567890';
+var specialsOptions = '!@#$%^&*()_=+{}[];:~`<,>.?/|'
+
 var passwordLength;
 var uppercase;
 var lowercase;
 var numbers;
+var specials
 
 //function to choose length of password
 function chooseLength(){
@@ -69,8 +76,20 @@ function chooseSpecials () {
 }
 chooseSpecials ();
 
+//use the return input from above four prompts to generate parameters for password
+function generatePassword () {
+  chooseLength ();
+  console.log(length);
+  chooseUppercase ();
+  console.log(uppercase);
+  chooseLowercase ();
+  console.log(lowercase);
+  chooseNumbers ();
+  console.log(numbers);
+  chooseSpecials ();
+  console.log(specials);
+}
 
-//when geenerate button is pressed, we will need a series of window prompts to appear
 
 //prompt should ask what criteria to include
   // length(8-128 characters), uppercase or lowercase or both, and/or special characters
